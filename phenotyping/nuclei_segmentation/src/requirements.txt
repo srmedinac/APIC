@@ -1,0 +1,6 @@
+pip install numpy==1.23.1 
+pip install openslide-python 
+pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cu117 
+pip install geojson 
+pip install scikit-image==0.17.2 
+pip install opencv-python

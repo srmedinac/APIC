@@ -26,13 +26,17 @@ APIC was found to be predictive of chemotherapy benefit for high-risk localized 
 
 Whole-slide images of core-needle prostate biopsies are used for this study, for the computational phemnotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification are considered. The data is not publicly available. The data is available upon reasonable request from the corresponding author and approval from NRG RTOG.
 
+### Patch extraction
+
+The whole-slide images were divided into 1024x1024 pixel patches with at least 70% tissue at 40x magnification. The patch extraction pipeline is available in Python in the `phenotyping/patch_extraction` folder, patch extraction relies heavily in the Histoprep library (link).
+
 ### Tumor segmentation
 
 The tumor region was segmented using a deep learning-based method. Pre-trained weights are available in the `models` directory. The tumor segmentation pipeline is available in Python, it uses Pytorch and CUDA GPU acceleration.
 
 ### Nuclei segmentation and classification
 
-Nuclei segmentation and classification was performed using the state-of-the-art deep learning-based method HoverNet, a modified HoverNet is available in the `phenotyping/nuclei_segmentation` folder. The nuclei were classified into 6 classes: epithelium, inflammatory, connective, neoplastic, necrosis, and unknown. Lymphocytes are then identified as the nuclei classified as inflammatory.
+Nuclei segmentation and classification was performed using the state-of-the-art deep learning-based method HoverNet (citation/link), a modified HoverNet is available in the `phenotyping/nuclei_segmentation` folder. The nuclei were classified into 6 classes: epithelium, inflammatory, connective, neoplastic, necrosis, and unknown. Lymphocytes are then identified as the nuclei classified as inflammatory.
 
 ### Spatial arrangement of lymphocytes
 
