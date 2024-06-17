@@ -36,7 +36,7 @@ The tumor region was segmented using a deep learning-based method. Pre-trained w
 
 ### Nuclei segmentation and classification
 
-Nuclei segmentation and classification was performed using the state-of-the-art deep learning-based method HoverNet (citation/link), a modified HoverNet is available in the `phenotyping/nuclei_segmentation` folder. The nuclei were classified into 6 classes: epithelium, inflammatory, connective, neoplastic, necrosis, and unknown. Lymphocytes are then identified as the nuclei classified as inflammatory. The Pannuke pretrained weights are available in the following [link]:(<https://drive.google.com/file/d/1SbSArI3KOOWHxRlxnjchO7_MbWzB4lNR/view?usp=sharing>).
+Nuclei segmentation and classification was performed using the state-of-the-art deep learning-based method HoverNet (citation/link), a modified HoverNet is available in the `phenotyping/nuclei_segmentation` folder. The nuclei were classified into 6 classes: epithelium, inflammatory, connective, neoplastic, necrosis, and unknown. Lymphocytes are then identified as the nuclei classified as inflammatory. The Pannuke pretrained weights are available in the following [link](https://drive.google.com/file/d/1SbSArI3KOOWHxRlxnjchO7_MbWzB4lNR/view?usp=sharing).
 
 ### Spatial arrangement of lymphocytes
 
