@@ -1,6 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 from getFeatureStats import getFeatureStats
+
 
 def getClusterDensityMeasures_v2(groups):
     features = []
@@ -8,12 +8,12 @@ def getClusterDensityMeasures_v2(groups):
 
     numGroups = len(groups)
 
-    stats = ['Total', 'Mean', 'Std', 'Median', 'Max', 'Min', 'Kurtosis', 'Skewness']
-    meas = ['AreaClusters_G', 'DensityClusters_G']
+    stats = ["Total", "Mean", "Std", "Median", "Max", "Min", "Kurtosis", "Skewness"]
+    meas = ["AreaClusters_G", "DensityClusters_G"]
 
     for i in range(numGroups):
-        areas = groups[i]['areas']
-        dens = groups[i]['densities']
+        areas = groups[i]["areas"]
+        dens = groups[i]["densities"]
 
         if len(areas) > 0:
             features += getFeatureStats(areas) + getFeatureStats(dens)
@@ -22,6 +22,6 @@ def getClusterDensityMeasures_v2(groups):
 
         for ms in range(len(meas)):
             for st in range(len(stats)):
-                featureNames.append(f'{stats[st]}{meas[ms]}{i + 1}')
+                featureNames.append(f"{stats[st]}{meas[ms]}{i + 1}")
 
     return features, featureNames

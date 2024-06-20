@@ -1,5 +1,5 @@
-"Author: Mayukhmala Jana"
 import numpy as np
+
 
 def calc_frac(M):
     # M is an arbitrary binary mask in uint format where values are either 0 or 255

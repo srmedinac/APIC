@@ -1,16 +1,12 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 from scipy.linalg import eig
 import matplotlib.pyplot as plt
 import sys
 
+
 def normalize_staining(I, Io=240, beta=0.15, alpha=1, HERef=None, maxCRef=None):
     if HERef is None:
-        HERef = np.array([
-            [0.5626, 0.2159],
-            [0.7201, 0.8012],
-            [0.4062, 0.5581]
-        ])
+        HERef = np.array([[0.5626, 0.2159], [0.7201, 0.8012], [0.4062, 0.5581]])
 
     if maxCRef is None:
         maxCRef = np.array([1.9705, 1.0308])

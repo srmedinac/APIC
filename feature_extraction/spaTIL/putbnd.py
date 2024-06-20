@@ -1,6 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 def putbnd(x, y=None, buffer=None, nocall=None):
     if y is None:
@@ -18,13 +18,13 @@ def putbnd(x, y=None, buffer=None, nocall=None):
             y = x[:, 1]
             x = x[:, 0]
         else:
-            raise ValueError('PUTBND: invalid point coordinates')
+            raise ValueError("PUTBND: invalid point coordinates")
 
     x = x.flatten()
     y = y.flatten()
 
     if len(x) != len(y):
-        raise ValueError('PUTBND: lengths of coordinate vectors are incompatible.')
+        raise ValueError("PUTBND: lengths of coordinate vectors are incompatible.")
 
     if buffer is None:
         buffer = 0.05
@@ -55,5 +55,3 @@ def putbnd(x, y=None, buffer=None, nocall=None):
         plt.axis(v)
 
     return v
-
-

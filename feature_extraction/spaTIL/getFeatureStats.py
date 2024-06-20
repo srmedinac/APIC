@@ -1,6 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 from scipy.stats import kurtosis, skew
+
 
 def getFeatureStats(feat_vector):
     # GetFeatureStats Summary of this function goes here
@@ -13,8 +13,8 @@ def getFeatureStats(feat_vector):
         np.nanmedian(feat_vector, axis=0),
         np.nanmax(feat_vector, axis=0),
         np.nanmin(feat_vector, axis=0),
-        kurtosis(feat_vector, nan_policy='omit', axis=0, fisher=False),
-        skew(feat_vector, nan_policy='omit', axis=0),
+        kurtosis(feat_vector, nan_policy="omit", axis=0, fisher=False),
+        skew(feat_vector, nan_policy="omit", axis=0),
     ]
 
     return stats

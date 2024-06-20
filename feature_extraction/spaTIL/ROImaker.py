@@ -1,8 +1,10 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 
+
 def ROImaker(I, MMMM):
-    y1 = I * MMMM[:, :, np.newaxis]  # Expand dimensions to match the third dimension of I
+    y1 = (
+        I * MMMM[:, :, np.newaxis]
+    )  # Expand dimensions to match the third dimension of I
     colors = [0.9, 0.8, 0.8]
 
     y2 = np.zeros_like(I)

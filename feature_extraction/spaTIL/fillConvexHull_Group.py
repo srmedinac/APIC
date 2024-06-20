@@ -1,8 +1,8 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import ConvexHull
 from scipy.stats import mode
+
 
 def fillConvexHull_Group(members, nodes, ccc):
     numMembers = len(members)
@@ -10,16 +10,23 @@ def fillConvexHull_Group(members, nodes, ccc):
 
     for i in range(numMembers):
         member = members[i]
-        col = nodes['centroid_c'][member]
-        row = nodes['centroid_r'][member]
+        col = nodes["centroid_c"][member]
+        row = nodes["centroid_r"][member]
 
         if len(col) > 2:
             points = np.column_stack((col, row))
             hull = ConvexHull(points)
-            
-            plt.plot(points[hull.vertices, 0], points[hull.vertices, 1], color=ccc, linewidth=4)
-            plt.fill(points[hull.vertices, 0], points[hull.vertices, 1], ccc, facealpha=0.5)
-            
+
+            plt.plot(
+                points[hull.vertices, 0],
+                points[hull.vertices, 1],
+                color=ccc,
+                linewidth=4,
+            )
+            plt.fill(
+                points[hull.vertices, 0], points[hull.vertices, 1], ccc, facealpha=0.5
+            )
+
             areas.append(hull.volume)
 
     totalArea = sum(areas)
@@ -29,6 +36,3 @@ def fillConvexHull_Group(members, nodes, ccc):
     modeArea = mode(areas)[0][0]
 
     return totalArea, avgArea, medianArea, stdArea, modeArea
-
-# Example usage:
-# totalArea, avgArea, medianArea, stdArea, modeArea = fillConvexHull_Group(members, nodes, ccc)

@@ -1,7 +1,6 @@
-"Author: Mayukhmala Jana"
-
 import numpy as np
 from scipy.spatial import ConvexHull, QhullError
+
 
 def getClusterProperties(clusters, nodes):
     num_clusters = len(clusters)
@@ -18,12 +17,14 @@ def getClusterProperties(clusters, nodes):
 
         # Check if all x-coordinates are the same
         if np.all(col == col[0]):
-            print(f"Warning: All x-coordinates are the same for cluster {i}. Skipping ConvexHull calculation.")
+            print(
+                f"Warning: All x-coordinates are the same for cluster {i}. Skipping ConvexHull calculation."
+            )
             centroids[i, :] = [np.mean(col), np.mean(row)]
             continue
 
         try:
-            hull = ConvexHull(np.column_stack((col, row)), qhull_options='QJ')
+            hull = ConvexHull(np.column_stack((col, row)), qhull_options="QJ")
         except QhullError:
             print(f"Error: ConvexHull calculation failed for cluster {i}. Skipping.")
             continue
@@ -37,6 +38,7 @@ def getClusterProperties(clusters, nodes):
         polygons[i] = np.column_stack((col[hull.vertices], row[hull.vertices]))
 
     return centroids, polygons, areas, densities
+
 
 # Example usage:
 # centroids, polygons, areas, densities = get_cluster_properties(clusters, nodes)

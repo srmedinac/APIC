@@ -1,13 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import io
-
-# from skimage.draw import polygon
-# from construct_nodesCluster_new import construct_nodesCluster_new
-# from drawGraph_standard import drawGraph_standard
-# from drawGraph_boundary_standard import drawGraph_boundary_standard
-# from drawGraph_convexHull_standard import drawGraph_convexHull_standard
 
 import numpy as np
 import matplotlib.pyplot as plt

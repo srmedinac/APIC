@@ -1,7 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 from get_nuclei_features import get_nuclei_features
-from get_spaTAM_features import get_spaTAM_features
+from feature_extraction.spaTIL.get_spaTIL_features import get_spaTIL_features
 from ESW_maker2 import ESW_maker2
 from ROImaker import ROImaker
 from SA_drawGraphsAndConvexHull_all import SA_drawGraphsAndConvexHull_all
@@ -10,10 +9,10 @@ import matplotlib.pyplot as plt
 import scipy.io
 
 
-def extract_tam_features(
+def extract_til_features(
     image,
     nuclei_mask,
-    tam_mask,
+    lymphocyte_mask,
     epi_mask,
     stroma_mask,
     histoqc_mask,
@@ -37,12 +36,11 @@ def extract_tam_features(
         epi_nuclei[c] = epi_mask[
             int(nuclei_centroids_rounded[c, 0]), int(nuclei_centroids_rounded[c, 1])
         ]
-        tam_nuclei[c] = tam_mask[
+        tam_nuclei[c] = lymphocyte_mask[
             int(nuclei_centroids_rounded[c, 0]), int(nuclei_centroids_rounded[c, 1])
         ]
-        # print(nuclei_centroids_rounded[c, 1])
         if (
-            tam_mask[
+            lymphocyte_mask[
                 int(nuclei_centroids_rounded[c, 1]), int(nuclei_centroids_rounded[c, 0])
             ]
             == 1
@@ -57,16 +55,14 @@ def extract_tam_features(
             epi_nuclei[c] = epi_mask[
                 int(nuclei_centroids_rounded[c, 0]), int(nuclei_centroids_rounded[c, 1])
             ]
-            tam_nuclei[c] = tam_mask[
+            tam_nuclei[c] = lymphocyte_mask[
                 int(nuclei_centroids_rounded[c, 0]), int(nuclei_centroids_rounded[c, 1])
             ]
 
         coords = [nuclei_centroids[~tam_nuclei, :], nuclei_centroids[tam_nuclei, :]]
-        features, feat_names = get_spaTAM_features(coords, alpha, r)
+        features, feat_names = get_spaTIL_features(coords, alpha, r)
         # print(feat_names)
         if draw_option == 1:
-            # alpha = [0.7, 0.6]
-            # r = 0.01
             classes = np.zeros(len(nuclei_centroids_rounded))
             classes[~tam_nuclei] = 1
             classes[tam_nuclei] = 2
@@ -74,10 +70,7 @@ def extract_tam_features(
             colors = [[0.500, 0.8250, 0.00], [0.3010, 0.50, 0.330]]
             colors = [(0, 0, 1, 0.5), (0, 1, 0, 0.5)]
             V30 = ESW_maker2(epi_mask, stroma_mask, histoqc_mask)
-            # V40 = (V30 + image) / 2
-            V41 = ROImaker(
-                image, epi_mask + stroma_mask
-            )  # V40 should go here if pink background.
+            V41 = ROImaker(image, epi_mask + stroma_mask)
 
             drawNucContoursByClass_SA2(
                 nuclei_mask, V41, nuclei_centroids, classes, colors

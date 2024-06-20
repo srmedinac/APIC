@@ -1,4 +1,3 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 import matplotlib.pyplot as plt
 from rowtoval import rowtoval
@@ -12,8 +11,8 @@ def mstree(crds, labels, doplot):
         labels = []
     if doplot is None:
         doplot = False
-        
-    #print(crds)
+
+    # print(crds)
 
     n, p = crds.shape
 
@@ -29,7 +28,7 @@ def mstree(crds, labels, doplot):
     edgelen = np.zeros(n - 1)
 
     dist = eucl(crds)
-    
+
     highval = np.max(dist) + 1
 
     e1 = np.ones(n - 1, dtype=int)
@@ -49,33 +48,43 @@ def mstree(crds, labels, doplot):
         edgelen[edge] = mindist
 
         if edge < n - 1:
-            
+
             i = np.where(e2 == u)
             e1[i] = 0
             e2[i] = 0
             ed[i] = highval
-            
+
             indx = np.where(e1 > 0)[0]
-            
-            for k in range(len(indx)):                
+
+            for k in range(len(indx)):
                 j = indx[k]
-                t = e1[j]-1
-                v = e2[j]-1
-                u=u-1
-                
+                t = e1[j] - 1
+                v = e2[j] - 1
+                u = u - 1
+
                 if dist[u, v] < dist[t, v]:
                     e1[j] = u
                     ed[j] = dist[u, v]
 
-    v,base = rowtoval(edges)
-    #print("edges:" ,edges)
-    v=v.T
-    v, outmat1, outmat2, outmat3, outmat4, outmat5, outmat6, outmat7, outmat8, outmat9 = sortmat(v, edges, edgelen, None, None, None, None, None, None, None)
-
+    v, base = rowtoval(edges)
+    # print("edges:" ,edges)
+    v = v.T
+    (
+        v,
+        outmat1,
+        outmat2,
+        outmat3,
+        outmat4,
+        outmat5,
+        outmat6,
+        outmat7,
+        outmat8,
+        outmat9,
+    ) = sortmat(v, edges, edgelen, None, None, None, None, None, None, None)
 
     if doplot:
         plt.figure()
-        plt.plot(crds[:, 0], crds[:, 1], 'ok')
+        plt.plot(crds[:, 0], crds[:, 1], "ok")
         putbnd(crds[:, 0], crds[:, 1])
 
         deltax = 0.018 * np.ptp(crds[:, 0])
@@ -91,10 +100,9 @@ def mstree(crds, labels, doplot):
             t, u = edges[i, 0], edges[i, 1]
             x = np.array([crds[t, 0], crds[u, 0]])
             y = np.array([crds[t, 1], crds[u, 1]])
-            plt.plot(x, y, '-k')
+            plt.plot(x, y, "-k")
 
         plt.hold(False)
         plt.show()
 
     return edges, edgelen, totlen
-

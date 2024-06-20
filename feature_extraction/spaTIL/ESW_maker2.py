@@ -1,15 +1,12 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def ESW_maker2(E, S, HQC):
-    colors = np.array([[0.3, 0.1, 0.5],
-                       [0.9, 0, 0.52],
-                       [0.9, 0.8, 0.8]])
+    colors = np.array([[0.3, 0.1, 0.5], [0.9, 0, 0.52], [0.9, 0.8, 0.8]])
 
     E_vis = np.zeros((E.shape[0], E.shape[1], 3))
     S_vis = np.zeros((E.shape[0], E.shape[1], 3))
-
 
     E_vis[:, :, 0] = colors[0, 0] * E
     E_vis[:, :, 1] = colors[0, 1] * E
@@ -29,4 +26,3 @@ def ESW_maker2(E, S, HQC):
                 y[i, j, 2] = colors[2, 2]
 
     return y
-

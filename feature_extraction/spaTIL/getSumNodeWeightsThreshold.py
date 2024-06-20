@@ -1,6 +1,6 @@
-"Author: Mayukhmala Jana"
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
+
 
 def getSumNodeWeightsThreshold(feature, distance, threshold):
     # getting distances, removing 0

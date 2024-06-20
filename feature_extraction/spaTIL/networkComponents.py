@@ -1,5 +1,5 @@
-"Author: Mayukhmala Jana"
 import numpy as np
+
 
 def networkComponents(A):
     # Number of nodes
@@ -12,7 +12,7 @@ def networkComponents(A):
     isDiscovered = np.zeros(N, dtype=bool)
     # Empty members list
     members = []
-    
+
     # Check every node
     for n in range(N):
         if not isDiscovered[n]:
@@ -33,17 +33,14 @@ def networkComponents(A):
                 members[-1].extend(new_nbrs)
                 # Increment ptr so we check the next member of this component
                 ptr += 1
-                
-    
+
     # Number of components
     nComponents = len(members)
-    
+
     sizes = np.array([len(component) for component in members])
     # Sort sizes and members in descending order
     idx = np.argsort(sizes)[::-1]
     sizes = sizes[idx]
     members = [members[i] for i in idx]
-    
-    
-    return nComponents, sizes, members
 
+    return nComponents, sizes, members
