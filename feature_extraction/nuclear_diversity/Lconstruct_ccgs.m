@@ -11,8 +11,8 @@ if nargin < 3
     %r = rand(1);
     r = 0.2;
 end
-%disp('Constructing the CCG...');
-%tic
+disp('Constructing the CCG...');
+tic
 
 X = [bounds(:).centroid_r; bounds(:).centroid_c];
 
@@ -40,4 +40,4 @@ y = bounds.centroid_c(idx);
 
 params.r = r;
 params.alpha = alpha;
-%toc
+toc

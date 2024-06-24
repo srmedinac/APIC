@@ -51,7 +51,9 @@ for j = 1:length(bounds.centroid_c)-1
 end
 
 % find gland networks
-[numcomp,group] = graphconncomp(sparse(edges));
+%[numcomp,group] = graphconncomp(sparse(edges));
+[numcomp,group] = conncomp(sparse(edges));
+
 
 % remove single gland networks
 temp_network = hist(group,numcomp);
@@ -68,7 +70,6 @@ feature_max=[2000, 80, 30,   1,    90, 60,    1, 180,    1, 0.6, 180,  60, 180, 
 feature_min=[ 200, 20,  8, 0.4,   -90, 20, 0.86,  50, 0.85,   0,  40,  10,  50,  50, 10,  40, 50, 10,  40, 20];
 
 for i=1:length(feature_names)
-    %cur_f=eval(properties.getfield(properties,feature_names{i}));
     cur_f=eval(['[properties.' feature_names{i} ']']);    
     info.feature_max(i)=feature_max(i);
     info.feature_min(i)=feature_min(i);
