@@ -28,7 +28,7 @@ Whole-slide images of core-needle prostate biopsies are used for this study, for
 
 ### Patch extraction
 
-The whole-slide images were divided into 1024x1024 pixel patches with at least 70% tissue at 40x magnification. The patch extraction pipeline is available in Python in the `phenotyping/patch_extraction` folder, patch extraction relies heavily in the [HistoPrep] (<https://github.com/jopo666/HistoPrep>) library.
+The whole-slide images were divided into 1024x1024 pixel patches with at least 70% tissue at 40x magnification. The patch extraction pipeline is available in Python in the `phenotyping/patch_extraction` folder, patch extraction relies heavily in the [HistoPrep](https://github.com/jopo666/HistoPrep) library.
 
 ### Tumor segmentation
 
