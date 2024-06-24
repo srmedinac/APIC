@@ -3,9 +3,10 @@ import pandas as pd
 import os
 from tqdm import tqdm
 
-results_path = "/home/smedin7/nfs/RTOG_0521/RTOG_0521_spaTIL_features_fixed_to_immune_cells"
+results_path = ""
 slides = os.listdir(results_path)
-save_path = "/home/smedin7/nfs/RTOG_0521/RTOG_0521_spaTIL_results_stats_per_slide_fixed_to_immune_cells"
+save_path = ""
+
 
 def calculate_row_statistics(row):
     std = np.nanstd(row)
@@ -16,16 +17,18 @@ def calculate_row_statistics(row):
     var = np.nanvar(row)
     mean = np.nanmean(row)
     median = np.nanmedian(row)
-    return pd.Series({
-        'Standard Deviation': std,
-        'Sum': sum_,
-        'Min': min_,
-        'Max': max_,
-        'Skewness': skewness,
-        'Variance': var,
-        'Mean': mean,
-        'Median': median
-    })
+    return pd.Series(
+        {
+            "Standard Deviation": std,
+            "Sum": sum_,
+            "Min": min_,
+            "Max": max_,
+            "Skewness": skewness,
+            "Variance": var,
+            "Mean": mean,
+            "Median": median,
+        }
+    )
 
 
 def get_statistics(results_path, slide):
@@ -37,20 +40,19 @@ def get_statistics(results_path, slide):
             print(f"Shape of {csv_file} is {df.shape}")
             continue
         dfs.append(df)
-    try:    
+    try:
         df = pd.concat(dfs, axis=1, ignore_index=True)
     except ValueError:
         print(f"Error in {slide}")
         return np.zeros((2792,))
     statistics_per_row = df.apply(calculate_row_statistics, axis=1)
-    #concatenated by statistics: e.g. sum, mean, std, min, max, skewness, variance, median of 1st feature, 2nd feature, 3rd feature, ...
     features = np.concatenate(statistics_per_row.values, axis=0)
 
     return features
+
 
 for slide in tqdm(slides):
     print(slide)
     stats = get_statistics(results_path, slide)
     print(stats.shape)
-    np.save(os.path.join(save_path,f"{slide}.npy"), stats)
-
+    np.save(os.path.join(save_path, f"{slide}.npy"), stats)

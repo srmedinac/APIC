@@ -11,13 +11,11 @@ from PIL import Image
 import time
 
 # Define paths
-patch_feature_path = (
-    "/Users/srmedinac/Downloads/RTOG_0521_spaTIL_features_fixed_to_immune_cells"
-)
-slide_name = "120723"
-slide_name_2 = "120660"
-slide_path = "/Volumes/Madabhushi-Lab/emory_datasets/pathomics_data/gu/prostate/cancer/2d_prostate/nrg_rtog/RTOG_0521/images_n_745_WSI/"
-patches_path = "/Users/srmedinac/Library/CloudStorage/OneDrive-EmoryUniversity/RTOG_0521_computational_data/RTOG_0521_patches/RTOG_all_patches_inference_1024"
+patch_feature_path = ""
+slide_name = ""
+slide_name_2 = ""
+slide_path = ""
+patches_path = ""
 downsample = 4
 patch_size = 1024
 level = 1
@@ -90,37 +88,26 @@ def make_overlay(slide_path, slide_name, patches, features, n_bins=20):
     blend = image.copy() * overlay[:, :, :3].copy()
     overlay = cv2.GaussianBlur(blend, (501, 501), 0)
     tissue_mask = cv2.medianBlur(tissue_mask, 3)
-    # overlay_image = Image.fromarray(overlay).convert("RGBA")
-    # base_image = Image.fromarray(image).convert("RGBA")
     alpha = 0.5
     array1 = np.array(image) / 255
     array2 = np.array(overlay)[:, :, :3] / 255
-    # output = 1 * array1 + (1 - alpha) * array2
     output = (1 - alpha) * array1 + alpha * (array2)
-    # Ensure pixel values do not overflow
     output = np.clip(output, 0, 1)
     final_image = np.zeros_like(output)
     final_image[tissue_mask == 1] = output[tissue_mask == 1]
     final_image[tissue_mask == 0] = array1[tissue_mask == 0]
-    # output = Image.alpha_composite(base_image, overlay_image)
     overlay = Image.fromarray((final_image * 255).astype(np.uint8).transpose(1, 0, 2))
-    overlay.save(
-        f"/Users/srmedinac/Library/CloudStorage/OneDrive-EmoryUniversity/Documents/scripts/general_scripts/overlay_{slide_name}.png"
-    )
+    overlay.save(f"overlay_{slide_name}.png")
 
     return final_image.transpose(1, 0, 2)
 
 
 def plot_overlays_side_by_side(output_1, output_2):
     fig, ax = plt.subplots(1, 2, figsize=(20, 10))
-    ax[0].title.set_text(
-        "Biomarker + | Slide id: 120723 Patient id: 0521-189746 | Gleason 4+4"
-    )
+    ax[0].title.set_text("Biomarker +")
     ax[0].imshow(output_1)
     ax[0].axis("off")
-    ax[1].title.set_text(
-        "Biomarker - | Slide id: 120660 Patient id: 0521-993781 | Gleason 3+4"
-    )
+    ax[1].title.set_text("Biomarker -")
     ax[1].imshow(output_2)
     ax[1].axis("off")
     plt.show()
@@ -133,7 +120,7 @@ def make_overlay_v2(
     features,
     blur=True,
     tissue=False,
-    output_path="/Users/srmedinac/Library/CloudStorage/OneDrive-EmoryUniversity/Documents/scripts/general_scripts/",
+    output_path="",
 ):
     slide = SlideReader(os.path.join(slide_path, slide_name + ".svs"))
     patch_coords = [

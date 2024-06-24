@@ -15,9 +15,7 @@ def getGraphFeatures(groups):
         centroids = groups[i]["clusterCentroids"]
 
         # Assuming you have a file 'GraphFeatureDescription.mat' with 'GraphFeatureDescription' variable
-        name_data = loadmat(
-            "/home/smedin7/nfs/spaTIL_python/GraphFeatureDescription.mat"
-        )
+        name_data = loadmat("GraphFeatureDescription.mat")
         names = [
             f"Graph{str(desc).replace(' ', '')}_G{i + 1}"
             for desc in name_data["GraphFeatureDescription"][0]

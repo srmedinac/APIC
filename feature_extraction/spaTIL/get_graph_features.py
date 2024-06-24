@@ -6,7 +6,7 @@ from mstree import mstree
 
 def get_graph_features(x, y):
     # Load data from GraphFeatureDescription.mat
-    data = loadmat("/home/smedin7/nfs/spaTIL_python/GraphFeatureDescription.mat")
+    data = loadmat("GraphFeatureDescription.mat")
 
     # Calculate the Voronoi diagram
     points = np.column_stack((x, y))
