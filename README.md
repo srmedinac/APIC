@@ -1,6 +1,6 @@
 # AI Pathology Classifier Predicts Docetaxel Benefit in High-Risk Localized Prostate Cancer: RTOG 0521 Validation
 
-Feature extraction and computational phenotyping used in the paper "AI Pathology Classifier Predicts Docetaxel Benefit in High-Risk Localized Prostate Cancer: RTOG 0521 Validation"
+Computational phenotyping used in the paper "AI Pathology Classifier Predicts Docetaxel Benefit in High-Risk Localized Prostate Cancer: RTOG 0521 Validation"
 
 ## Abstract
 
