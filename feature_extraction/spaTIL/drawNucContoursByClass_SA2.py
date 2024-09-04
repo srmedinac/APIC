@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from skimage.segmentation import find_boundaries
 import gc
 
 
@@ -15,47 +16,27 @@ def clear_all():
 
 
 def drawNucContoursByClass_SA2(M, I, centroids, classes, colors, tickness=0.5):
-    # clear_all()
+
     numCent = len(centroids)
     boundaries = find_boundaries(M)
 
-    # plt.figure()
+
+    plt.figure(figsize=(10, 10))
     plt.imshow(I, cmap="gray", origin="upper")
     plt.axis("off")
 
-    for i in range(len(boundaries)):
-        b = boundaries[i]
-        # print(len(boundaries))
-        w, x, y, z = min(b[:, 1]), max(b[:, 1]), min(b[:, 0]), max(b[:, 0])
-        # print(w, x, y, z)
+    boundaries_plotted = 0
+    for y, x in np.argwhere(boundaries):
         for j in range(numCent):
-            if (
-                centroids[j, 0] > y
-                and centroids[j, 0] < z
-                and centroids[j, 1] > w
-                and centroids[j, 1] < x
-            ):
+            if (centroids[j, 0] - 1 <= y <= centroids[j, 0] + 1 and
+                centroids[j, 1] - 1 <= x <= centroids[j, 1] + 1):
+                
                 index = int(classes[j])
                 if 1 <= index <= len(colors):
-                    if index == 1:
-                        plt.plot(
-                            b[:, 1],
-                            b[:, 0],
-                            color=colors[index - 1],
-                            linewidth=tickness,
-                        )  # color=(1, 1, 0), linewidth=tickness)   # Yellow for class 0
-                    elif index == 2:
-                        plt.plot(
-                            b[:, 1],
-                            b[:, 0],
-                            color=colors[index - 1],
-                            linewidth=tickness,
-                        )  # color=(0, 0, 1), linewidth=tickness)  # Blue for class 1
-                    else:
-                        print(f"Unexpected class index: {index}")
+                    plt.plot(x, y, 'o', color=colors[index - 1], markersize=1)
+                    boundaries_plotted += 1
                 else:
                     print(f"Index {index} is out of range for the 'colors' list.")
-
     plt.show()
 
 

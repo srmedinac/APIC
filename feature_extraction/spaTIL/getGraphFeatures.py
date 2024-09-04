@@ -15,7 +15,7 @@ def getGraphFeatures(groups):
         centroids = groups[i]["clusterCentroids"]
 
         # Assuming you have a file 'GraphFeatureDescription.mat' with 'GraphFeatureDescription' variable
-        name_data = loadmat("GraphFeatureDescription.mat")
+        name_data = loadmat("/Users/srmedinac/Documents/BMEPhD/rtog_publication/rtog/feature_extraction/spaTIL/GraphFeatureDescription.mat")
         names = [
             f"Graph{str(desc).replace(' ', '')}_G{i + 1}"
             for desc in name_data["GraphFeatureDescription"][0]

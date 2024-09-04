@@ -1,6 +1,6 @@
 import numpy as np
 from get_nuclei_features import get_nuclei_features
-from feature_extraction.spaTIL.get_spaTIL_features import get_spaTIL_features
+from get_spaTIL_features import get_spaTIL_features
 from ESW_maker2 import ESW_maker2
 from ROImaker import ROImaker
 from SA_drawGraphsAndConvexHull_all import SA_drawGraphsAndConvexHull_all
@@ -48,8 +48,7 @@ def extract_til_features(
             tam_nuclei_count += 1
 
     if len(nuclei_centroids_rounded) < 3:
-        print("Empty patch")
-        features = np.zeros(1172)
+        features = np.zeros(350)
     else:
         for c in range(len(nuclei_centroids_rounded)):
             epi_nuclei[c] = epi_mask[
@@ -70,10 +69,11 @@ def extract_til_features(
             colors = [[0.500, 0.8250, 0.00], [0.3010, 0.50, 0.330]]
             colors = [(0, 0, 1, 0.5), (0, 1, 0, 0.5)]
             V30 = ESW_maker2(epi_mask, stroma_mask, histoqc_mask)
-            V41 = ROImaker(image, epi_mask + stroma_mask)
+            # TODO: hack to make it work without histoqc mask and epi/stroma masks
+            V41 = ROImaker(image, histoqc_mask)
 
             drawNucContoursByClass_SA2(
-                nuclei_mask, V41, nuclei_centroids, classes, colors
+                nuclei_mask, image_2, nuclei_centroids, classes, colors
             )
             SA_drawGraphsAndConvexHull_all(image_2, V30, V41, coords, colors, r, alpha)
 
