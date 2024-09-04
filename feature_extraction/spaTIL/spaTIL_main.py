@@ -14,11 +14,11 @@ warnings.filterwarnings("ignore")
 
 # Configuration
 config = {
-    "patches_dir": r"/Users/srmedinac/Desktop/patches_1024_max_magnification",
-    "epi_stroma_masks_dir": r"/Users/srmedinac/Desktop/nuclei_segmentation_1024_max_magnification",
-    "nuclei_masks_dir": r"/Users/srmedinac/Desktop/nuclei_segmentation_1024_max_magnification",
-    "lymphocyte_masks_dir": r"/Users/srmedinac/Desktop/nuclei_segmentation_1024_max_magnification",
-    "results_features_dir": r"/Users/srmedinac/Desktop/CHAARTED_spaTIL_features_1024px",
+    "patches_dir": r"",
+    "epi_stroma_masks_dir": r"",
+    "nuclei_masks_dir": r"",
+    "lymphocyte_masks_dir": r"",
+    "results_features_dir": r"",
     "draw_option": 0,
     "alpha": [0.56, 0.56],
     "r": 0.07, # 0.07 for 1024. 0.04748 for 2048
