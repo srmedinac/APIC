@@ -1,3 +1,39 @@
+"""
+Overlay features on histopathology slides and compare them side by side.
+
+This script processes histopathology slide images and their associated feature data
+to create feature overlays. It normalizes feature values across two slides,
+generates heatmap overlays, and displays them side by side for comparison.
+
+Key functions:
+- get_feature_values: Extract feature values from CSV files
+- normalize_feature_values: Normalize feature values using StandardScaler
+- make_overlay: Create a feature overlay on a slide image
+- make_overlay_v2: An improved version of make_overlay with additional options
+- plot_overlays_side_by_side: Display two overlays side by side
+
+Usage:
+1. Set the required paths and parameters at the beginning of the script:
+   - patch_feature_path: Path to the directory containing feature CSV files
+   - slide_name: Name of the first slide
+   - slide_name_2: Name of the second slide
+   - slide_path: Path to the directory containing the slide images
+   - patches_path: Path to the directory containing patch images
+   - downsample: Downsampling factor for processing
+   - patch_size: Size of the patches
+   - level: Pyramid level of the slide to process
+   - feature: Index of the feature to analyze (1-based)
+
+2. Run the script to generate and display the feature overlays for two slides:
+   python overlay_features_slide_level.py
+
+The script will output:
+- Overlay images saved as PNG files in the current directory
+- A side-by-side comparison plot of the two overlays
+
+Author: Sebastian Medina
+"""
+
 import os
 import numpy as np
 import pandas as pd
@@ -189,7 +225,7 @@ def make_overlay_v2(
     return np.array(final_image_pil).transpose(1, 0, 2)
 
 
-now = time.time()
+
 print("Getting feature values...")
 features_img_1 = get_feature_values(
     patch_feature_path, patches_dir, slide_name, feature_idx=feature
@@ -207,5 +243,3 @@ output_2 = make_overlay_v2(
 )
 print("Plotting overlays...")
 plot_overlays_side_by_side(output_1, output_2)
-end = time.time()
-print("Time elapsed (minutes): ", (end - now) / 60)

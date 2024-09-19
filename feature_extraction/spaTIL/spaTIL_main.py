@@ -14,18 +14,19 @@ warnings.filterwarnings("ignore")
 
 # Configuration
 config = {
-    "patches_dir": r"",
-    "epi_stroma_masks_dir": r"",
-    "nuclei_masks_dir": r"",
-    "lymphocyte_masks_dir": r"",
-    "results_features_dir": r"",
+    "patches_dir": r"/Users/srmedinac/Desktop/RTOG_0521_40x_2048px_patches",
+    "epi_stroma_masks_dir": r"/Users/srmedinac/Desktop/RTOG_0521_40x_2048px_nuclei_segmentation",
+    "nuclei_masks_dir": r"/Users/srmedinac/Desktop/RTOG_0521_40x_2048px_nuclei_segmentation",
+    "lymphocyte_masks_dir": r"/Users/srmedinac/Desktop/RTOG_0521_40x_2048px_nuclei_segmentation",
+    "results_features_dir": r"/Users/srmedinac/Desktop/spaTIL_2048_features",
     "draw_option": 0,
     "alpha": [0.56, 0.56],
-    "r": 0.07, # 0.07 for 1024. 0.04748 for 2048
+    "r": 0.04748, # 0.07 for 1024. 0.04748 for 2048
     "histoqc_mask": None,
-    "patch_size": (1024,1024),
+    "patch_size": (2048,2048),
     "test_run": False, # set to True to run on a single tile and test the visualization and pipeline
-    "health_check": True
+    "health_check": False,
+    "num_processes": 12
 }
 
 def health_check(config, delete_extra=False):
@@ -268,9 +269,9 @@ def main():
         print(f"Total tiles to process: {total_tiles_to_process}")
         
         num_processes = multiprocessing.cpu_count()
-        wsi_chunks = np.array_split(wsi_to_process, num_processes)
-        print(f"Using {num_processes} CPU cores")
-        with multiprocessing.Pool(processes=num_processes) as pool:
+        wsi_chunks = np.array_split(wsi_to_process, config["num_processes"])
+        print(f"Using {config['num_processes']} CPU cores")
+        with multiprocessing.Pool(processes=config["num_processes"]) as pool:
             with tqdm(total=len(wsi_to_process), desc="WSI Progress") as pbar:
                 for chunk in wsi_chunks:
                     results = pool.map(partial(process_wsi, config=config), chunk)
