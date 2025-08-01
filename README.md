@@ -55,15 +55,6 @@ APIC was constructed using an elastic net penalized Cox regression model. The mo
 - Results suggest that 44-55% of patients may not benefit from docetaxel addition
 - First validated AI predictive classifier for docetaxel benefit in prostate cancer across disease stages
 
-## Code Availability
-
-The complete analysis pipeline consists of two main R scripts:
-
-1. **`APIC.R`** - APIC model development, feature extraction, and survival analysis
-2. **`multivariable_analysis.R`** - Multivariable Cox regression and forest plot generation
-
-The complete feature extraction pipeline and survival analysis code are available at: https://github.com/srmedinac/APIC
-
 ## Data Sharing
 
 Data are available via:
