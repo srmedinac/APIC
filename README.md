@@ -72,4 +72,3 @@ Medina S, Tokuyama N, Hammouda K, et al. An AI based Pathology Model to Predict 
 
 For questions regarding this work, please contact:
 - Corresponding author: anantm@emory.edu
-- Address: 1750 Haygood Drive, Suite N647, Atlanta, Georgia, 30322
