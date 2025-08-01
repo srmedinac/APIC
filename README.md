@@ -1,34 +1,20 @@
-# Explainable AI on H&E Predicts Docetaxel Benefit for High-Risk Localized Prostate Cancer in RTOG 0521
+# An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer
 
-Computational phenotyping used in the paper "Explainable AI on H&E Predicts Docetaxel Benefit for High-Risk Localized Prostate Cancer in RTOG 0521"
+Computational phenotyping used in the paper "An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer"
 
 ## Abstract
 
-### Background
-
-The randomized RTOG 0521 trial demonstrated that the incorporation of adjuvant docetaxel into the standard of care (SOC) - radiotherapy (RT) and long-term androgen deprivation therapy (ADT) - enhanced overall survival (OS) in patients with high-risk localized prostate cancer (PCa). Despite this improvement, the trial did not meet its primary target hazard ratio (HR) of 0.49. This suggests that biomarker-informed stratification could have identified the risk groups more likely to benefit from adjuvant docetaxel. We aim validate a predictive artificial intelligence-based pathology imaging classifier (APIC) to identify patients likely to benefit from docetaxel.
-
-### Methods
-
-Whole-slide images of prostate biopsies from 350 patients enrolled in RTOG 0521 were divided into training (D1: n = 84, RT plus ADT) and validation cohorts (D2: n = 85, RT plus ADT; D3: n = 181, docetaxel with RT plus ADT). APIC was constructed by identifying and categorizing individual cells as either immune or cancer cells. Subsequently, a series of features were extracted, focusing on the architectural arrangement and diversity of the cancer and immune cells. APIC was validated for its ability to predict OS endpoints and the benefit of added docetaxel in D2 and D3.
-
-### Results
-
-A significant correlation was observed between APIC and OS in D2 (HR = 2.21, 95% CI: 1.05-4.65, p = 0.0317), but not in D3 (HR = 1.05, 95% CI: 0.61-1.80, p = 0.867). The addition of docetaxel to SOC improved OS for patients with high APIC values (HR = 0.49, 95% CI: 0.26–0.92, p = 0.023), but not for those with low APIC values (HR = 1.17, 95% CI: 0.59–2.30, p = 0.656). This suggests that patients with high APIC values may experience increased OS when treated with docetaxel, indicating a potential role for APIC in treatment decision-making for localized high-risk PCa.
-
-### Conclusion
-
-APIC predicts benefit of docetaxel in localized high-risk PCa. To the best of our knowledge, this is the first validated AI predictive classifier for the benefit of docetaxel in high-risk, localized PCa.
+Docetaxel improves survival in metastatic hormone-sensitive and high-risk localized prostate cancer, but benefits vary substantially among patients. Without predictive biomarkers, clinicians cannot identify patients who will benefit, exposing many to unnecessary toxicity. Here we developed and validated an artificial intelligence-based pathology image classifier (APIC) to predict docetaxel benefit using digitized biopsies from two randomized phase 3 trials: CHAARTED (docetaxel plus androgen deprivation therapy versus androgen deprivation therapy alone in metastatic disease) and NRG/RTOG 0521 (docetaxel plus androgen deprivation therapy and radiotherapy versus androgen deprivation therapy and radiotherapy in high-risk localized disease). We analyzed CHAARTED patients (median follow-up 53.7 months) and NRG/RTOG 0521 patients (median follow-up 68.4 months) with adequate tissue quality. APIC quantifies tumor-immune interactions and nuclear heterogeneity from hematoxylin and eosin-stained slides. In CHAARTED, APIC-positive patients (56.7%) showed significantly improved overall survival with docetaxel (hazard ratio 0.52; 95% confidence interval 0.31-0.85; P=0.008) and delayed castration-resistant progression (hazard ratio 0.48; 95% confidence interval 0.33-0.71; P<0.001), with significant treatment-APIC interactions (P=0.022 and P=0.031, respectively). In NRG/RTOG 0521, APIC-positive patients demonstrated overall survival benefit (hazard ratio 0.49; 95% confidence interval 0.26-0.92; P=0.023) with significant treatment-APIC interaction (P=0.024). On multivariable analysis, APIC remained independently predictive in both trials. These findings suggest that APIC achieves level 1b evidence through validation in two independent trials, identifying prostate cancer patients who benefit from docetaxel treatment across metastatic and localized settings, supporting its use for treatment selection.
 
 ## Computational phenotyping and feature extraction
 
 ### Data
 
-Whole-slide images of core-needle prostate biopsies were used for this study, for the computational phemnotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification are considered. The data is available upon reasonable request from the corresponding author and approval from NRG Oncology RTOG.
+Whole-slide images of core-needle prostate biopsies were used for this study. For the computational phenotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification (NRG/RTOG 0521) or 20x magnification (CHAARTED) are considered. The data is available upon request from the corresponding authors and approval from NRG Oncology RTOG and ECOG-ACRIN.
 
 ### Patch extraction
 
-The whole-slide images were divided into 1024x1024 pixel patches with at least 70% tissue at 40x magnification. A patch extraction script example is available in Python in the `phenotyping/patch_extraction` folder, patch extraction relies heavily in the [HistoPrep](https://github.com/jopo666/HistoPrep) library (Pohjonen et al. 2022).
+The whole-slide images were divided into 1024x1024 pixel patches with at least 70% tissue. A patch extraction script example is available in Python in the `phenotyping/patch_extraction` folder, patch extraction relies heavily on the [HistoPrep](https://github.com/jopo666/HistoPrep) library (Pohjonen et al. 2022).
 
 ### Tumor segmentation
 
@@ -40,7 +26,7 @@ Nuclei segmentation and classification was performed using the state-of-the-art 
 
 ### Spatial arrangement of lymphocytes
 
-350 features were extracted from the spatial arrangement of lymphocyte and non-lymphocyte clusters. The feature extraction pipline is available in python in the `feature_extraction/spaTIL` folder.
+350 features were extracted from the spatial arrangement of lymphocyte and non-lymphocyte clusters. The feature extraction pipeline is available in python in the `feature_extraction/spaTIL` folder.
 
 ### Tumor nuclear diversity
 
@@ -48,4 +34,45 @@ Nuclei segmentation and classification was performed using the state-of-the-art 
 
 ### Model construction and survival analysis
 
-APIC was constructed using an elastic net penalized cox regression model. The model was trained on D1 and validated on D2 and D3 in each individual feature set first and then the top 7 features between both sets were combined to construct APIC. The survival analysis was performed using Kaplan-Meier analysis and log-rank tests. The individual survival analysis and the combined survival analysis notebooks are available in the `survival_analysis` folder.
+APIC was constructed using an elastic net penalized Cox regression model. The model was trained on development cohorts (50% of control arm patients from each trial) and validated on independent validation cohorts (remaining 50% of control patients plus all docetaxel-treated patients). The model first evaluated individual feature sets and then combined the top 7 features between both sets to construct the final APIC classifier. The survival analysis was performed using Kaplan-Meier analysis and log-rank tests. The individual survival analysis and the combined survival analysis notebooks are available in the `survival_analysis` folder.
+
+## Key Findings
+
+### CHAARTED Trial (Metastatic Disease)
+- APIC-positive patients (56.7% of cohort) showed significant overall survival benefit with docetaxel (HR = 0.52, P=0.008)
+- APIC-positive patients had delayed castration-resistant progression (HR = 0.48, P<0.001)
+- APIC-negative patients showed no benefit from docetaxel addition
+- 5-year overall survival: 40.2% with docetaxel vs 15.9% with ADT alone in APIC-positive patients
+
+### NRG/RTOG 0521 Trial (High-Risk Localized Disease)
+- APIC-positive patients (45% of cohort) demonstrated significant overall survival benefit (HR = 0.49, P=0.023)
+- APIC-negative patients showed no significant survival difference with docetaxel
+- 10-year overall survival: 74.4% with docetaxel vs 52.7% with standard care in APIC-positive patients
+
+### Clinical Impact
+- APIC remained independently predictive in multivariable analyses for both trials
+- Treatment-APIC interactions were significant in both cohorts
+- Results suggest that 44-55% of patients may not benefit from docetaxel addition
+- First validated AI predictive classifier for docetaxel benefit in prostate cancer across disease stages
+
+## Code Availability
+
+The complete feature extraction pipeline and survival analysis code are available at: https://github.com/srmedinac/APIC
+
+## Data Sharing
+
+Data are available via:
+- NRG Oncology: https://www.nrgoncology.org/Resources/Ancillary-Projects-Data-Sharing-Application
+- ECOG-ACRIN: Contact for data sharing protocols
+
+## Citation
+
+If you use this work, please cite:
+```
+Medina S, Tokuyama N, Hammouda K, et al. An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer.
+```
+
+## Contact
+
+For questions regarding this work, please contact:
+- Corresponding author: anantm@emory.edu
