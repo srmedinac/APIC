@@ -10,7 +10,7 @@ Docetaxel improves survival in metastatic hormone-sensitive and high-risk locali
 
 ### Data
 
-Whole-slide images of core-needle prostate biopsies were used for this study. For the computational phenotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification (NRG/RTOG 0521) or 20x magnification (CHAARTED) are considered. The data is available upon request from the corresponding authors and approval from NRG Oncology RTOG and ECOG-ACRIN.
+Whole-slide images of core-needle prostate biopsies were used for this study. For the computational phenotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification (NRG/RTOG 0521) or 20x magnification (CHAARTED) are considered. Quality control assessment was performed using [HistoQC](https://github.com/choosehappy/HistoQC) (Janowczyk et al. 2019). The data is available upon request from the corresponding authors and approval from NRG Oncology RTOG and ECOG-ACRIN.
 
 ### Patch extraction
 
@@ -34,7 +34,7 @@ Nuclei segmentation and classification was performed using the state-of-the-art 
 
 ### Model construction and survival analysis
 
-APIC was constructed using an elastic net penalized Cox regression model. The model was trained on development cohorts (50% of control arm patients from each trial) and validated on independent validation cohorts (remaining 50% of control patients plus all docetaxel-treated patients). The model first evaluated individual feature sets and then combined the top 7 features between both sets to construct the final APIC classifier. The survival analysis was performed using Kaplan-Meier analysis and log-rank tests. The individual survival analysis and the combined survival analysis notebooks are available in the `survival_analysis` folder.
+APIC was constructed using an elastic net penalized Cox regression model. The model was trained on development cohorts (50% of control arm patients from each trial) and validated on independent validation cohorts (remaining 50% of control patients plus all docetaxel-treated patients). The survival analysis was performed using Kaplan-Meier analysis and log-rank tests. The statistical analysis code is available in R in the `survival_analysis` folder.
 
 ## Key Findings
 
