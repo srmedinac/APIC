@@ -57,6 +57,11 @@ APIC was constructed using an elastic net penalized Cox regression model. The mo
 
 ## Code Availability
 
+The complete analysis pipeline consists of two main R scripts:
+
+1. **`APIC.R`** - APIC model development, feature extraction, and survival analysis
+2. **`multivariable_analysis.R`** - Multivariable Cox regression and forest plot generation
+
 The complete feature extraction pipeline and survival analysis code are available at: https://github.com/srmedinac/APIC
 
 ## Data Sharing
@@ -69,10 +74,11 @@ Data are available via:
 
 If you use this work, please cite:
 ```
-Medina S, Tokuyama N, Hammouda K, et al. An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer.
+Medina S, Tokuyama N, Hammouda K, et al. An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer. [Journal and details to be added upon publication]
 ```
 
 ## Contact
 
 For questions regarding this work, please contact:
 - Corresponding author: anantm@emory.edu
+- Address: 1750 Haygood Drive, Suite N647, Atlanta, Georgia, 30322
