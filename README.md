@@ -61,9 +61,8 @@ APIC was constructed using an elastic net penalized Cox regression model. The mo
 
 ## Data Sharing
 
-Data are available via:
-- NRG Oncology: https://www.nrgoncology.org/Resources/Ancillary-Projects-Data-Sharing-Application
-- ECOG-ACRIN: Contact for data sharing protocols
+- This repository includes all scripts for preprocessing, feature extraction, model training, and statistical analysis used in this study. The clinical trial data used in this study, including histology images and deidentified clinical information, were obtained from NRG Oncology and ECOG-ACRIN Cancer Research Group under data use agreements. Access to these data is governed by the policies of the originating cooperative groups. Researchers interested in accessing these data must submit an ancillary project application through the NRG Oncology data sharing portal (https://www.nrgoncology.org/Resources/Ancillary-Projects-Data-Sharing-Application) and the ECOG-ACRIN Cancer Research Group (https://ecog-acrin.org/). Processed data derived from the histology images may be made available to qualified researchers upon reasonable request to the corresponding author and execution of appropriate data transfer agreements, subject to the cooperative groups approval.
+
 
 ## Citation
 
