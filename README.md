@@ -1,6 +1,6 @@
-# An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer
+# A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer
 
-Computational phenotyping used in the paper "An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer"
+Computational phenotyping used in the paper "A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer"
 
 ## Abstract
 
