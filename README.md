@@ -14,7 +14,7 @@ Conclusions: APIC predicts docetaxel benefit in both metastatic and localized pr
 
 ### Data
 
-Whole-slide images of core-needle prostate biopsies were used for this study. For the computational phenotyping and feature extraction, all regions of interest of 1024x1024 pixels with at least 70% tissue at 40x magnification (NRG/RTOG 0521) or 20x magnification (CHAARTED) are considered. Quality control assessment was performed using [HistoQC](https://github.com/choosehappy/HistoQC) (Janowczyk et al. 2019). The data is available upon request from the corresponding authors and approval from NRG Oncology RTOG and ECOG-ACRIN.
+Whole-slide images of core-needle prostate biopsies were used for this study from two landmark phase III clinical trials (CHAARTED, NRG/RTOG 0521). Quality control assessment was performed using [HistoQC](https://github.com/choosehappy/HistoQC) (Janowczyk et al. 2019). The data is available upon request from the corresponding authors and approval from NRG Oncology RTOG and ECOG-ACRIN.
 
 ### Patch extraction
 
