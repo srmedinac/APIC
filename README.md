@@ -69,7 +69,7 @@ Data are available via:
 
 If you use this work, please cite:
 ```
-Medina S, Tokuyama N, Hammouda K, et al. An AI based Pathology Model to Predict Docetaxel Benefit in Prostate Cancer. [Journal and details to be added upon publication]
+Medina S, Tokuyama N, et al. A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer.
 ```
 
 ## Contact
