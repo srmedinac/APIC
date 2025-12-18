@@ -66,9 +66,25 @@ APIC was constructed using an elastic net penalized Cox regression model. The mo
 
 ## Citation
 
-If you use this work, please cite:
+If you use or find this work interesting, please cite:
 ```
-Medina S, Tokuyama N, et al. A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer.
+Sebastian Medina, Naoto Tokuyama, Kamal Hammouda, Tilak Pathak, Tuomas Mirtti, Pingfu Fu, Shilpa Gupta, Priti Lal, Howard M. Sandler, Rohann Correa, Susan Chafe, Amit Shah, Jason A. Efstathiou, Karen Hoffman, Michael Straza, Mark A. Hallman, Richard Jordan, Stephanie L. Pugh, Christopher J. Sweeney, Anant Madabhushi; A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer. Clin Cancer Res 2025; https://doi.org/10.1158/1078-0432.CCR-25-3327
+```
+
+```
+@article{10.1158/1078-0432.CCR-25-3327,
+    author = {Medina, Sebastian and Tokuyama, Naoto and Hammouda, Kamal and Pathak, Tilak and Mirtti, Tuomas and Fu, Pingfu and Gupta, Shilpa and Lal, Priti and Sandler, Howard M. and Correa, Rohann and Chafe, Susan and Shah, Amit and Efstathiou, Jason A. and Hoffman, Karen and Straza, Michael and Hallman, Mark A. and Jordan, Richard and Pugh, Stephanie L. and Sweeney, Christopher J. and Madabhushi, Anant},
+    title = {A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer},
+    journal = {Clinical Cancer Research},
+    year = {2025},
+    month = {12},
+    issn = {1078-0432},
+    doi = {10.1158/1078-0432.CCR-25-3327},
+    url = {https://doi.org/10.1158/1078-0432.CCR-25-3327},
+    eprint = {https://aacrjournals.org/clincancerres/article-pdf/doi/10.1158/1078-0432.CCR-25-3327/3708349/ccr-25-3327.pdf},
+}
+
+
 ```
 
 ## Contact
