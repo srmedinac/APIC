@@ -1,6 +1,6 @@
 # A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer
 
-Computational phenotyping used in the paper "A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer"
+Computational phenotyping used in the paper "A Computational Pathology Model to Predict Docetaxel Benefit in Localized High-Risk and Metastatic Prostate Cancer. Clin Cancer Res 2025; https://doi.org/10.1158/1078-0432.CCR-25-3327"
 
 ## Abstract
 
